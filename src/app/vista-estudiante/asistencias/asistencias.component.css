@@ -1,0 +1,25 @@
+.asistencias-container {
+  padding: 20px;
+}
+
+.asistencia-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.asistencia-table th,
+.asistencia-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.asistencia-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.asistencia-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

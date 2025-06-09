@@ -1,0 +1,50 @@
+<div class="asignaciones-container">
+  <h2>Asignar Materia a Cursos</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="registrarAsignaciones()">
+
+    <!-- Selección de materia -->
+    <div class="form-group">
+      <label for="materia">Materia</label>
+      <select id="materia" formControlName="materia" (change)="onMateriaChange()">
+        <option value="" disabled selected>Seleccione una materia</option>
+        <option *ngFor="let materia of materias" [value]="materia.id">
+          {{ materia.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Selección de cursos -->
+    <div class="form-group">
+      <label for="cursos">Cursos</label>
+      <select id="cursos" formControlName="cursos" multiple>
+        <optgroup *ngIf="primariaCursos.length > 0" label="Primaria">
+          <ng-container *ngFor="let curso of primariaCursos">
+            <option [value]="curso.id">{{ curso.nombre }}</option>
+          </ng-container>
+        </optgroup>
+        <optgroup *ngIf="secundariaCursos.length > 0" label="Secundaria">
+          <ng-container *ngFor="let curso of secundariaCursos">
+            <option [value]="curso.id">{{ curso.nombre }}</option>
+          </ng-container>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Botón de envío -->
+    <button type="submit" [disabled]="!formulario.valid">Asignar Materia</button>
+  </form>
+
+  <!-- Mensaje de respuesta del backend -->
+  <div *ngIf="response">
+    <h3>Asignaciones creadas:</h3>
+    <ul>
+      <li *ngFor="let curso of response.creadas">{{ curso }}</li>
+    </ul>
+
+    <h3>Asignaciones existentes:</h3>
+    <ul>
+      <li *ngFor="let curso of response.existentes">{{ curso }}</li>
+    </ul>
+  </div>
+</div>

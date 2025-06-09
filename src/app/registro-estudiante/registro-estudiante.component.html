@@ -1,0 +1,56 @@
+<div class="registro-container">
+  <form [formGroup]="formulario" (ngSubmit)="registrarEstudiante()">
+    <div class="form-card">
+      <!-- Estudiante -->
+      <div class="form-section student-section">
+        <h2>Datos del Estudiante</h2>
+        <input formControlName="nombre" placeholder="Nombre completo" />
+        <input formControlName="ci" placeholder="CI" />
+        <input formControlName="celular" placeholder="Celular" />
+        <input formControlName="email" placeholder="Correo electrónico" />
+      </div>
+
+      <!-- Tutor -->
+      <div class="form-section tutor-section">
+        <h2>Datos del Tutor</h2>
+
+        <label class="checkbox-label">
+          <input type="checkbox" [checked]="crearTutor" (change)="toggleTutorCheckbox($event)" />
+          Registrar nuevo tutor
+        </label>
+
+        <ng-container *ngIf="!crearTutor">
+          <input [value]="tutorCI" (input)="actualizarCI($event)" placeholder="CI del tutor existente" />
+          <button type="button" (click)="buscarTutor()">Buscar Tutor</button>
+          <div *ngIf="tutorEncontrado">
+            <p><strong>Nombre:</strong> {{ tutorEncontrado.nombre }}</p>
+            <p><strong>Email:</strong> {{ tutorEncontrado.email }}</p>
+            <p><strong>Celular:</strong> {{ tutorEncontrado.celular }}</p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="crearTutor">
+          <input formControlName="tutor_ci" placeholder="CI del tutor" />
+          <input formControlName="nombre_tutor" placeholder="Nombre del tutor" />
+          <input formControlName="celular_tutor" placeholder="Celular del tutor" />
+          <input formControlName="email_tutor" placeholder="Correo del tutor" />
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button type="submit">Registrar Estudiante</button>
+    </div>
+  </form>
+
+  <!-- Resultado -->
+  <div *ngIf="registroExitoso" class="resultado">
+    <h3>{{ registroExitoso.mensaje }}</h3>
+
+    <p><strong>ID del Estudiante:</strong> {{ registroExitoso.estudiante?.id }}</p>
+    <p><strong>Username:</strong> {{ registroExitoso.estudiante?.username }}</p>
+
+    <p><strong>ID del Tutor:</strong> {{ registroExitoso.tutor?.id }}</p>
+    <p><strong>Username del Tutor:</strong> {{ registroExitoso.tutor?.username }}</p>
+  </div>
+</div>

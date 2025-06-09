@@ -1,0 +1,49 @@
+<div class="materias-estudiante-container">
+  <h2>Mis Materias</h2>
+
+  <div *ngIf="materias.length > 0; else sinMaterias">
+    <ul>
+      <li *ngFor="let materia of materias">
+        <button
+          *ngFor="let materia of materias"
+          (click)="verNotas(materia)"
+          class="btn-materia"
+      >
+          {{ materia.materia_nombre }} - {{ materia.curso }} ({{ materia.gestion }})
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #sinMaterias>
+    <p>No se encontraron materias asignadas.</p>
+  </ng-template>
+
+  <div *ngIf="resultados.length > 0">
+    <h3>Notas por Evaluación</h3>
+
+    <div *ngFor="let r of resultados" class="resultado-box">
+      <h4>{{ r.materia }} - {{ r.curso }} ({{ r.gestion }})</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Trabajo</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Valor</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ev of r.evaluaciones">
+            <td>{{ ev.nombre }}</td>
+            <td>{{ ev.tipo }}</td>
+            <td>{{ ev.fecha }}</td>
+            <td>{{ ev.valor }}</td>
+            <td>{{ ev.nota !== null ? ev.nota : '—' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

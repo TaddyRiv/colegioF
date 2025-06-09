@@ -1,0 +1,130 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.sidebar li:hover {
+  background-color: #218838;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 30px;
+  background: #f7f9fc;
+}
+/* Contenedor principal con sidebar y panel derecho */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Panel lateral izquierdo */
+.sidebar {
+  width: 240px;
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.sidebar li:hover {
+  background-color: #218838;
+}
+
+.sidebar li.active {
+  background-color: #1e7e34;
+}
+
+/* Panel de contenido derecho */
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f4f6f9;
+  overflow-y: auto;
+}
+
+/* Estilo para las listas de notas */
+.note-list {
+  padding-left: 0;
+}
+
+.note-list li {
+  margin-bottom: 15px;
+}
+
+/* Tarjetas de materias */
+.materia-card {
+  background-color: #fff;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-left: 5px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.materia-card h3 {
+  margin-top: 0;
+}
+
+/* Tabla de asistencias */
+.asistencia-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.asistencia-table th,
+.asistencia-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.asistencia-table th {
+  background-color: #007bff;
+  color: white;
+}

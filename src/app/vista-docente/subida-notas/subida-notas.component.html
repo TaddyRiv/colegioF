@@ -1,0 +1,72 @@
+<div class="subida-notas-container">
+  <h2>Subir Notas por Evaluación</h2>
+
+  <form [formGroup]="formulario" class="formulario">
+    <!-- Asignación -->
+    <div class="form-group">
+      <label for="asignacion">Asignación</label>
+      <select
+        id="asignacion"
+        formControlName="asignacion_id"
+        (change)="onAsignacionSeleccionada()"
+      >
+        <option [ngValue]="null">Seleccione una asignación</option>
+        <option *ngFor="let a of asignaciones" [value]="a.asignacion_id">
+          {{ a.materia }} - {{ a.curso }} ({{ a.gestion }})
+        </option>
+      </select>
+    </div>
+
+    <!-- Evaluación -->
+    <div class="form-group" *ngIf="evaluaciones.length > 0">
+      <label for="evaluacion">Evaluación</label>
+      <select
+        id="evaluacion"
+        formControlName="evaluacion_id"
+        (change)="onEvaluacionSeleccionada()"
+      >
+        <option [ngValue]="null">Seleccione una evaluación</option>
+        <option *ngFor="let e of evaluaciones" [value]="e.evaluacion_id">
+          {{ e.nombre }} ({{ e.fecha }})
+        </option>
+      </select>
+    </div>
+  </form>
+
+  <!-- Tabla para ingresar notas -->
+  <form *ngIf="estudiantes.length > 0" (ngSubmit)="enviarNotas()">
+    <table class="tabla-notas">
+      <thead>
+        <tr>
+          <th>Estudiante</th>
+          <th>CI</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let est of estudiantes">
+          <td>{{ est.nombre }}</td>
+          <td>{{ est.ci }}</td>
+          <td>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              [(ngModel)]="est.nota"
+              name="nota_{{ est.estudiante_id }}"
+              required
+              ngModel
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit" class="btn-guardar">Guardar Notas</button>
+  </form>
+
+  <!-- Mensaje -->
+  <div *ngIf="mensaje" class="mensaje-exito">
+    ✅ {{ mensaje }}
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h2>Registro de Asistencias</h2>
+<table class="asistencia-table">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let asistencia of asistencias">
+      <td>{{ asistencia.fecha }}</td>
+      <td>{{ asistencia.estado }}</td>
+    </tr>
+  </tbody>
+</table>

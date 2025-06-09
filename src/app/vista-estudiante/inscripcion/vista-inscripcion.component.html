@@ -1,0 +1,20 @@
+<div class="inscripcion-container">
+  <h2>Formulario de Inscripción</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="inscribir()">
+    <label for="curso">Curso</label>
+    <select id="curso" formControlName="curso">
+      <option *ngFor="let curso of cursos" [value]="curso.id">
+        {{ curso.nombre }} - {{ curso.nivel }}
+      </option>
+    </select>
+
+   <p *ngIf="gestionActual">
+  <strong>ID Gestión activa:</strong> {{ gestionActual.id }}
+</p>
+
+
+
+    <button type="submit">Inscribirme</button>
+  </form>
+</div>

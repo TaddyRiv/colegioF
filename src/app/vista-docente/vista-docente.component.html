@@ -1,0 +1,16 @@
+<div class="layout">
+  <div class="sidebar">
+    <h3>Docente</h3>
+    <ul>
+      <li><a routerLink="/docente/notas">Notas</a></li>
+      <li><a routerLink="/docente/trabajos">Trabajos</a></li>
+      <li><a routerLink="/docente/asignaciones">Asignar Materias</a></li>
+      <li><a routerLink="/docente/registrar-evaluacion">Registrar Evaluación</a></li> <!-- 👈 Nuevo enlace --><li><a routerLink="/docente/subir-notas">Subir Notas</a></li>
+      <li (click)="logout()">Cerrar sesión</li>
+    </ul>
+  </div>
+
+  <div class="main-panel">
+    <router-outlet></router-outlet>
+  </div>
+</div>

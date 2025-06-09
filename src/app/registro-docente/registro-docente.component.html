@@ -1,0 +1,20 @@
+<div class="docente-background">
+  <div class="registro-docente-card">
+    <h2>Registro de Docente</h2>
+    <p>Registra cuenta como docente</p>
+
+    <form (ngSubmit)="registrarDocente()">
+      <input type="text" placeholder="Nombre completo" [(ngModel)]="form.nombre" name="nombre" required />
+      <input type="number" placeholder="CI" [(ngModel)]="form.ci" name="ci" required />
+      <input type="text" placeholder="Celular" [(ngModel)]="form.celular" name="celular" required />
+      <input type="email" placeholder="Email" [(ngModel)]="form.email" name="email" required />
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <div class="login-link">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login">Iniciar sesión</a>
+    </div>
+  </div>
+</div>

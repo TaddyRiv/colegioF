@@ -1,0 +1,44 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li,
+.sidebar a {
+  display: block;
+  margin-bottom: 15px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 10px;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 40px;
+  background-color: #f8f9fa;
+}

@@ -1,0 +1,66 @@
+.asignaciones-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.asignaciones-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+select#cursos {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: px;
+  border: 1px solid #ccc;
+  height: 200px; /* Aumenta según lo que necesites */
+  box-sizing: border-box;
+}
+select#materia {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  margin-top: 20px;
+  padding-left: 20px;
+  color: #333;
+}
