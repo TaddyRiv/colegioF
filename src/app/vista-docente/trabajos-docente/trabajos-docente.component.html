@@ -1,0 +1,40 @@
+<div class="trabajos-container">
+  <h2>Mis Trabajos Creados</h2>
+
+  <div *ngIf="trabajos.length > 0; else sinDatos">
+    <div *ngFor="let t of trabajos" class="trabajo-box">
+      <h3>{{ t.materia }} - {{ t.curso }} ({{ t.gestion }})</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ev of t.evaluaciones">
+            <td>{{ ev.nombre }}</td>
+            <td>{{ ev.tipo }}</td>
+            <td>{{ ev.valor }}</td>
+            <td>{{ ev.fecha }}</td>
+            <td>
+              <span [ngClass]="{
+                'badge bg-success': !ev.cerrado,
+                'badge bg-danger': ev.cerrado
+              }">
+                {{ ev.cerrado ? 'Cerrado' : 'Abierto' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #sinDatos>
+    <p>No se encontraron trabajos registrados.</p>
+  </ng-template>
+</div>

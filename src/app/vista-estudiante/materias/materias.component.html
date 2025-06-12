@@ -1,29 +1,28 @@
 <div class="materias-estudiante-container">
   <h2>Mis Materias</h2>
 
-  <div *ngIf="materias.length > 0; else sinMaterias">
-    <ul>
-      <li *ngFor="let materia of materias">
-        <button
-          *ngFor="let materia of materias"
-          (click)="verNotas(materia)"
-          class="btn-materia"
-      >
-          {{ materia.materia_nombre }} - {{ materia.curso }} ({{ materia.gestion }})
-        </button>
-      </li>
-    </ul>
+  <!-- Botonera de materias -->
+  <div *ngIf="materias.length > 0; else sinMaterias" class="botonera">
+    <button
+      *ngFor="let materia of materias"
+      (click)="verNotas(materia)"
+      class="btn-materia"
+    >
+      {{ materia.materia_nombre }} - {{ materia.curso }} ({{ materia.gestion }})
+    </button>
   </div>
 
   <ng-template #sinMaterias>
     <p>No se encontraron materias asignadas.</p>
   </ng-template>
 
+  <!-- Evaluaciones por materia seleccionada -->
   <div *ngIf="resultados.length > 0">
     <h3>Notas por Evaluación</h3>
 
     <div *ngFor="let r of resultados" class="resultado-box">
       <h4>{{ r.materia }} - {{ r.curso }} ({{ r.gestion }})</h4>
+
       <table>
         <thead>
           <tr>
@@ -46,4 +45,42 @@
       </table>
     </div>
   </div>
+
+  <!-- Tabla general de predicción de nota final -->
+  <div *ngIf="predicciones.length > 0" class="resultado-box mt-4">
+    <h3>Predicción de Nota Final por Materia</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Evaluaciones Registradas</th>
+          <th>Total Evaluaciones</th>
+          <th>Promedio Actual</th>
+          <th>Nota Final</th>
+          <th>Nota Predicha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pred of predicciones">
+          <td>{{ pred.materia }}</td>
+          <td>{{ pred.evaluaciones_registradas }}</td>
+          <td>{{ pred.total_evaluaciones }}</td>
+          <td>{{ pred.promedio_actual | number: '1.0-2' }}</td>
+          <td>{{ pred.nota_final !== null ? (pred.nota_final | number: '1.0-2') : '—' }}</td>
+          <td>{{ pred.nota_predicha | number: '1.0-2' }}</td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': pred.estado_predicho === 'Aprobado',
+              'badge bg-danger': pred.estado_predicho === 'Reprobado'
+            }">
+              {{ pred.estado_predicho }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+

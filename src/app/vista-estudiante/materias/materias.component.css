@@ -81,3 +81,63 @@ table th {
   }
 }
 /* Responsive design for smaller screens */
+.botonera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn-materia {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-materia:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-materia:active {
+  transform: scale(0.98);
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+}
+.badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+}
+

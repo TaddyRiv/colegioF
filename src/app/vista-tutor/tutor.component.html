@@ -1,0 +1,48 @@
+<div class="tutor-container">
+  <h2>Estudiantes Asignados</h2>
+
+  <div class="botones-estudiantes">
+    <ul>
+      <li *ngFor="let est of estudiantes">
+        <button class="btn-estudiante" (click)="verNotas(est)">
+          {{ est.nombre }} (CI: {{ est.ci }})
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="notas.length > 0">
+    <h3>Notas de {{ estudianteSeleccionado.nombre }}</h3>
+
+    <div class="botones-materias">
+      <button *ngFor="let mat of notas"
+              class="btn-materia"
+              [class.active]="materiaSeleccionada === mat"
+              (click)="seleccionarMateria(mat)">
+        {{ mat.materia }} - {{ mat.curso }} ({{ mat.gestion }})
+      </button>
+    </div>
+
+    <div *ngIf="materiaSeleccionada" class="materia-box">
+      <h4>{{ materiaSeleccionada.materia }} - {{ materiaSeleccionada.curso }} ({{ materiaSeleccionada.gestion }})</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Evaluación</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ev of materiaSeleccionada.evaluaciones">
+            <td>{{ ev.evaluacion }}</td>
+            <td>{{ ev.tipo }}</td>
+            <td>{{ ev.valor }}</td>
+            <td>{{ ev.nota !== null ? ev.nota : '—' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

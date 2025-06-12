@@ -24,28 +24,32 @@ export class UsuarioService {
   }
 
   // 3. Login
-  login(data: { username: string, password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login/`, data);
-  }
-  manejarLoginExitoso(res: any) {
+  // 3. Login
+login(data: { username: string, password: string }): Observable<any> {
+  return this.http.post(`${this.apiUrl}/login/`, data);
+}
+
+manejarLoginExitoso(res: any) {
   localStorage.setItem('token', res.access);
   localStorage.setItem('rol', res.rol);
   localStorage.setItem('nombre', res.nombre);
   localStorage.setItem('username', res.username);
 
-
-  // Si `res.estudiante` es un objeto { id: 14, ... }
+  // Si es estudiante, guarda el id del estudiante
   if (res.rol === 'estudiante' && res.estudiante) {
-    localStorage.setItem('estudiante_id', res.estudiante.id); // <- importante
-  }
-
-  // Redireccionamiento según el rol
-  if (res.rol === 'estudiante') {
+    localStorage.setItem('estudiante_id', res.estudiante.id);
     this.router.navigate(['/estudiante']);
+
+  // Si es docente, redirige a vista docente
   } else if (res.rol === 'docente') {
     this.router.navigate(['/docente']);
+
+  // ✅ Si es tutor, redirige a vista tutor
+  } else if (res.rol === 'tutor') {
+    this.router.navigate(['/tutor']);
   }
 }
+
 
 
 
@@ -197,6 +201,35 @@ getNotasPorMateria(materiaId: number): Observable<any> {
       }
     }
   );
+}
+//19 Obtener estudiantes por tutor
+getEstudiantesPorTutor(): Observable<any> {
+  const token = localStorage.getItem('token');
+  return this.http.get('http://127.0.0.1:8000/api/usuarios/tutor/estudiantes/', {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
+//20 Obtener notas por estudiante
+getNotasPorEstudiante(estudianteId: number): Observable<any> {
+  const token = localStorage.getItem('token');
+  return this.http.get(`http://127.0.0.1:8000/api/usuarios/tutor/estudiante/${estudianteId}/notas/`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
+
+getPrediccionesEstudiante(): Observable<any> {
+  const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  return this.http.get(`${this.apiUrl}/estudiante/predicciones/`, { headers });
+}
+
+getResumenDocente(): Observable<any> {
+  const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  return this.http.get(`${this.apiUrl}/docente/resumen/`, { headers });
+}
+
+getEvaluacionesDocente(): Observable<any> {
+  const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  return this.http.get(`${this.apiUrl}/docente/evaluaciones/`, { headers });
 }
 
 

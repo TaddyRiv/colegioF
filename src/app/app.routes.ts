@@ -14,6 +14,11 @@ import { VistaInscripcionComponent } from './vista-estudiante/inscripcion/vista-
 import { VistaAsignacionesComponent } from './vista-docente/asignaciones/vista-asignaciones.component';
 import { RegistroEvaluacionComponent } from './vista-docente/registro-evaluacion/registro-evaluacion.component';
 import { SubidaNotasComponent } from './vista-docente/subida-notas/subida-notas.component';
+import { TrabajosDocenteComponent } from './vista-docente/trabajos-docente/trabajos-docente.component';
+import { NotasDocenteComponent } from './vista-docente/notas-docente/notas-docente.component';
+
+
+import { TutorComponent } from './vista-tutor/tutor.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,6 +33,8 @@ export const routes: Routes = [
       { path: 'asignaciones', component: VistaAsignacionesComponent },
       { path: 'registrar-evaluacion', component: RegistroEvaluacionComponent },
       { path: 'subir-notas', component: SubidaNotasComponent },
+      { path: 'trabajos', component: TrabajosDocenteComponent },
+      { path: 'notas', component: NotasDocenteComponent },
     ]
   },
   {
@@ -38,5 +45,8 @@ export const routes: Routes = [
       { path: 'asistencias', component: AsistenciasComponent },
       { path: 'inscripcion', component: VistaInscripcionComponent },
     ]
-  }
+  },
+  { path: 'tutor', component: TutorComponent },
+
+
 ];
