@@ -140,4 +140,25 @@ table th {
 .bg-danger {
   background-color: #dc3545;
 }
+.bg-warning {
+  background-color: #ffc107;
+}
+.badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+}
 
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+}

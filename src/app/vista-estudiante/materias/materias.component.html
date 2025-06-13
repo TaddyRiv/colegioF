@@ -59,6 +59,7 @@
           <th>Nota Final</th>
           <th>Nota Predicha</th>
           <th>Estado</th>
+          <th>Evaluación General</th> <!-- ✅ nueva columna -->
         </tr>
       </thead>
       <tbody>
@@ -77,10 +78,17 @@
               {{ pred.estado_predicho }}
             </span>
           </td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': pred.evaluacion_general === 'Bueno',
+              'badge bg-warning': pred.evaluacion_general === 'Regular',
+              'badge bg-danger': pred.evaluacion_general === 'Malo'
+            }">
+              {{ pred.evaluacion_general }}
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-
